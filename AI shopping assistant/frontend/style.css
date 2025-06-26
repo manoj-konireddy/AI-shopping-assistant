@@ -1,0 +1,297 @@
+:root {
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --user-msg-bg: #e0f7fa;
+  --bot-msg-bg: #ffe0b2;
+  --border-color: #ccc;
+  --primary: #1976d2;
+  --primary-dark: #1565c0;
+}
+
+[data-theme='dark'] {
+  --bg-color: #111827;
+  --card-bg: #1f2937;
+  --text-color: #f3f4f6;
+  --user-msg-bg: #2563eb;
+  --bot-msg-bg: #334155;
+  --border-color: #374151;
+  --primary: #60a5fa;
+  --primary-dark: #3b82f6;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-color);
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+/* === Tab Header Area === */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabs button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tabs button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* === Main Tab Section === */
+.tab-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.tab-content input[type="text"],
+.tab-content input[type="file"],
+.tab-content input[type="number"],
+.tab-content textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+.tab-content button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.tab-content button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* === Chatbox Section === */
+.chatbox {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+/* === Messages === */
+.message {
+  margin: 0.5rem 0;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user {
+  background-color: var(--user-msg-bg);
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot {
+  background-color: var(--bot-msg-bg);
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* === Spinner === */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #ffa500;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Markdown & Code === */
+code {
+  background: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.message.bot {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.message.bot p { margin-bottom: 1em; }
+.message.bot ul { padding-left: 1.2rem; margin-bottom: 1em; }
+.message.bot li { margin-bottom: 0.5em; }
+.message.bot code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.message.bot pre {
+  background: #f8f9fa;
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  color: var(--text-color);
+  white-space: pre-wrap;
+}
+
+.message.bot h1, .message.bot h2, .message.bot h3 {
+  font-weight: 600;
+  margin: 0.8rem 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.message.bot strong { font-weight: bold; }
+.message.bot em { font-style: italic; }
+.message.bot table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+}
+.message.bot th,
+.message.bot td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: left;
+}
+
+/* === Meal Planner Inputs === */
+#meal input[type="text"],
+#meal input[type="number"],
+#meal input[type="file"] {
+  margin: 6px 0;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-content {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="file"] {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* === UX Enhancements === */
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 4px rgba(25, 118, 210, 0.5);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(25, 118, 210, 0.5);
+}
+
+h4 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}

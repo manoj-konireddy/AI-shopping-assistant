@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛍️ Smart Shopping Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🛒 Walmart Smart AI Assistant</h1>
+
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <button id="themeToggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+      </div>
+
+
+    <div class="tabs">
+      <button onclick="showTab('chat')">🤖 Smart Chat</button>
+      <button onclick="showTab('image')">📷 Product Analysis</button>
+      <button onclick="showTab('nutrition')">🍱 Nutrition Tracker</button>
+      <button onclick="showTab('shopping')">🛒 Smart Shopping List</button>
+      <button onclick="showTab('meal')">🍽️ Meal Planner & Smart List</button>
+    </div>
+
+    <!-- 🤖 Smart Chat -->
+    <div id="chat" class="tab-content">
+      <div class="chatbox" id="chatbox"></div>
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Ask something..." />
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="startVoice()">🎤</button>
+      </div>
+    </div>
+
+    <!-- 📷 Product Analysis -->
+    <div id="image" class="tab-content" style="display:none;">
+      <h3>Upload Product Image</h3>
+      <input type="file" id="imageInput" accept="image/*" />
+      <input type="text" id="imageQuestion" placeholder="What do you want to know?" />
+      <button onclick="analyzeImage()">Analyze Product</button>
+      <div id="imageResult" class="bot message"></div>
+    </div>
+
+    <!-- 🍱 Nutrition Tracker -->
+    <div id="nutrition" class="tab-content" style="display:none;">
+      <h3>Smart Nutrition Tracker</h3>
+      <input type="text" id="foodItem" placeholder="e.g. chicken curry" />
+      <input type="text" id="quantity" placeholder="e.g. 2 cups" />
+      <input type="text" id="mealType" placeholder="e.g. Lunch" />
+      <button onclick="trackNutrition()">Track Nutrition</button>
+      <div id="nutritionResult" class="bot message"></div>
+    </div>
+
+    <!-- 🛒 Smart Shopping List -->
+    <div id="shopping" class="tab-content" style="display:none;">
+      <h3>Smart Shopping List Generator</h3>
+      <input type="text" id="shoppingItems" placeholder="e.g. milk,bread,sugar" />
+      <input type="text" id="shoppingCategory" placeholder="e.g. Groceries" />
+      <button onclick="createShoppingList()">Create Walmart List</button>
+      <div id="shoppingResult" class="bot message"></div>
+    </div>
+
+    <!-- 🍽️ Meal Planner & Smart List -->
+    <div id="meal" class="tab-content" style="display:none;">
+      <h2>🍽️ AI Meal Planner & 🛒 Smart List</h2>
+
+      <h4>Plan Configuration:</h4>
+      <input type="number" id="duration" placeholder="Plan Duration (days)" min="1" value="3" />
+      <input type="number" id="people" placeholder="Number of People" min="1" value="2" />
+      <input type="text" id="diet" placeholder="Diet (e.g. vegetarian, keto)" />
+      <input type="text" id="cuisines" placeholder="Cuisine Preferences (comma-separated)" />
+      <input type="text" id="notes" placeholder="Additional Notes (e.g. no spicy food)" />
+      <button onclick="generateMealPlan()">Generate Meal Plan</button>
+
+      <div class="message bot" id="mealPlanResult"></div>
+      <button onclick="confirmMealPlan()">✅ Confirm Plan</button>
+
+      <h4>📷 Upload Pantry Images (Optional)</h4>
+      <input type="file" id="inventoryImages" multiple accept="image/*" />
+      <button onclick="uploadInventory()">Upload Inventory</button>
+
+      <h4>🧠 Generate Smart Shopping List</h4>
+      <button onclick="generateSmartList()">🛍️ Create Smart List</button>
+      <div class="message bot" id="shoppingListResult"></div>
+
+      <h4>📱 Export QR Code</h4>
+      <button onclick="generateQR()">Generate QR</button>
+      <br />
+      <img id="qrImage" src="" alt="QR Code will appear here" style="max-width: 300px; margin-top: 10px;" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
